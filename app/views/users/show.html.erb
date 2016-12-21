@@ -21,9 +21,16 @@ Welcome to <strong><%= @user.username.capitalize %>'s </strong> Profile! <br /> 
 <strong>User's Posts!</strong><br /><br />
 <% @user.posts.each do |p| %>
 	<button><%= link_to 'Show', post_path(p) %></button>
+	<% if current_user == @user %>
 	<button><%= link_to "Edit Post", edit_post_path(p) %></button>
+	<% end %>
 	[<%= p.created_at %>]
 	<strong>Title:</strong> <%= p.title %><br />
 	<strong>Body:</strong> <%= p.body %>
 	<br /><br />
+	<% if current_user == @user %>
+	<button><%= link_to 'Delete Post', post_path(p),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></button><br /><br />
+    <% end %>
 <% end %>

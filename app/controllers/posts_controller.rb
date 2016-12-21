@@ -32,10 +32,14 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-
+	  @post = Post.find(params[:id])
+	  @post.destroy
+	 	flash[:notice] = "Post Deleted!"
+	  redirect_to current_user
 	end
 
 	def show
+		@user = User.find params[:id]
 		@post = Post.find params[:id]
 	end
 end
