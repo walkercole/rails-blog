@@ -8,5 +8,10 @@
 <% end %>
 
 <h3> Recent Posts! </h3>
-
+<% Post.all.last(10).reverse_each do |i| %>
+ 	by: <a href="users/<%= i.user_id %>"><%= User.find(i.user_id).username %></a> @
+ 	<strong><%= i.created_at %></strong>
+ 	<h3><em><%= i.title %></em></h3>
+ 	<p><%= i.body %></p>
+ <% end %> 
 

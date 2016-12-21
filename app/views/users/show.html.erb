@@ -20,6 +20,7 @@ Welcome to <strong><%= @user.username.capitalize %>'s </strong> Profile! <br /> 
 <br /><br />
 <strong>User's Posts!</strong><br /><br />
 <% @user.posts.each do |p| %>
+	<button><%= link_to 'Show', post_path(p) %></button>
 	<button><%= link_to "Edit Post", edit_post_path(p) %></button>
 	[<%= p.created_at %>]
 	<strong>Title:</strong> <%= p.title %><br />

@@ -11,7 +11,7 @@ class PostsController < ApplicationController
 		@post.user = current_user
 		if @post.save
 			flash[:notice] = "Post successfully created!"
-			redirect_to users_path current_user
+			redirect_to current_user
 		else
 			raise "oops something went wrong: #{@post.errors.full_messages}"
 		end
