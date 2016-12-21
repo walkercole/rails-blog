@@ -1,0 +1,12 @@
+<h1>Home Page</h1>
+
+
+<%= form_tag("/search", method: "get") do %>
+	<%= label_tag(:query, "Search Users:") %>
+	<%= text_field_tag(:query) %>
+	<%= submit_tag("Submit") %>
+<% end %>
+
+<h3> Recent Posts! </h3>
+
+

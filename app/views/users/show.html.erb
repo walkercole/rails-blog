@@ -1,0 +1,28 @@
+<br />
+Welcome to <strong><%= @user.username.capitalize %>'s </strong> Profile! <br /> <br />
+<strong>Bio:</strong>
+<%= @user.profile %>
+<br />
+<br />
+<% if current_user == @user %>
+	<button><%= link_to "Edit Profile", edit_user_path(@user) %></button>
+	<button><%= link_to "Delete #{@user.username}", @user, method: :delete %></button><br /><br />
+	<h4>Create a Post!</h4>
+
+	<%= form_for Post.new do |f| %>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+		<%= f.label :body %>
+		<%= f.text_field :body %>
+		<%= f.submit %>
+	<% end %>
+<% end %>
+<br /><br />
+<strong>User's Posts!</strong><br /><br />
+<% @user.posts.each do |p| %>
+	<button><%= link_to "Edit Post", edit_post_path(p) %></button>
+	[<%= p.created_at %>]
+	<strong>Title:</strong> <%= p.title %><br />
+	<strong>Body:</strong> <%= p.body %>
+	<br /><br />
+<% end %>

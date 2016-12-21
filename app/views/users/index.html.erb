@@ -1,0 +1,6 @@
+
+<h2> There are currently <%=@users.size %> registered users! </h2>
+<h3> Users: <br /> <% @users.each do |user| %>
+	<%= link_to user.username, user %>
+	<br />
+	<% end %>
