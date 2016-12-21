@@ -6,8 +6,8 @@
 	<h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <p>
-  	
-    <strong><%= @user.username %>:</strong>
+
+    <strong><%= @post.user.username %>:</strong>
     <%= comment.commenter %>
   </p>
  
@@ -15,7 +15,14 @@
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
+  <p>
+  <% if current_user == @post.user %>
+  <button><%= link_to 'Delete Comment', [comment.post, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %></button> <% end %>
+</p>
 <% end %>
+
 	<h2>Add a comment:</h2>
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <p>

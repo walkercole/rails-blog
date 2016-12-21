@@ -39,6 +39,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@comment = Comment.find params[:id]
 		@user = User.find params[:id]
 		@post = Post.find params[:id]
 	end
