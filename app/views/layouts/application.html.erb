@@ -12,15 +12,20 @@
   </head>
 
   <body>
+    <div id="homebar">
+    <a href="/"><button id="homeb">Home</button></a>
+    <% if current_user %>
+      <button id="homeb"><%= link_to "Profile", current_user %></button>
+        <button id="homeb"><%= link_to "Logout", sessions_path, method: :delete %></button>
+    <% end %>
+    <h2 id="homeM">Rails Blog</h2>
+    </div>
       <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
     <% end -%>
     <br />
-    <a href="/"><button>Home</button></a><br /><br />
   <% if current_user %>
     logged in as <%= current_user.username %><br />
-  <button><%= link_to "Profile", current_user %></button>
-  <button><%= link_to "Logout", sessions_path, method: :delete %></button>
     <% else %>
       <fieldset>
         <legend>Log In</legend>
